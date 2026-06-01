@@ -1,9 +1,23 @@
-import type{Metadata}from'next'
-import'./globals.css'
-export const metadata:Metadata={title:'ITS-R-Allergy-Tracker',description:'Health Services — ITS-R Universe'}
-export default function RootLayout({children}:{children:React.ReactNode}){
-return(<html lang="en"><body style={{background:'#0a0a0f',color:'#f8fafc',margin:0}}>
-<header style={{padding:'1rem 2rem',borderBottom:'1px solid #1e293b'}}><span style={{color:'#d4af37',fontWeight:'bold'}}>ITS-R</span><span style={{color:'#f8fafc',marginLeft:'0.5rem'}}>Allergy Tracker</span></header>
-{children}
-<footer style={{textAlign:'center',padding:'2rem',borderTop:'1px solid #1e293b',marginTop:'4rem'}}><p style={{color:'#94a3b8',fontSize:'0.875rem'}}>ITS-R Universe</p><p style={{color:'#64748b',fontSize:'0.75rem'}}>In loving memory of Roshan Ali Sahab 🤲</p></footer>
-</body></html>)}
+import type { Metadata } from 'next'
+import './globals.css'
+
+export const metadata: Metadata = {
+  title: 'ITS-R Universe',
+  description: 'ITS-R Universe — In loving memory of Roshan Ali Sahab',
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function(){
+            var t=localStorage.getItem('its-r-theme');
+            if(t==='light') document.documentElement.setAttribute('data-theme','light');
+          })();
+        `}} />
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+}
